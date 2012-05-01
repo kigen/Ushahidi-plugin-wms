@@ -9,7 +9,7 @@ author: Seth kigen
 author website: http://twitter.com/kigen
 
 == Description ==
-Modify the deafult map to WMS base layer.
+A simple plugin for Ushahidi platform that allows adding OGC WMS Layers as {Base or Overlay} 
 
 == Installation ==
 1. Copy the entire /wms/ directory into your /plugins/ directory.
