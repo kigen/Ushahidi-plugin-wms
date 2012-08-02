@@ -16,5 +16,10 @@ A simple plugin for Ushahidi platform that allows adding OGC WMS Layers as {Base
 2. Edit plugin config to define WMS (base layers & Overlays) you would like to show up on the map.
 4. Activate the plugin.
 == Changelog ==
+0.3
+- Added 2.5 support
+
 0.2
-- Added 2.3 support. 
+- Added 2.3 and 2.4 support. 
+- Fixed projection issues
+
