@@ -5,30 +5,23 @@
  * Config file
  */
 
-
 //Register all layers here...
 $config['layers'] = array(
     'wms_base' => array(
-        'title' => "Administrative Units",
-        'name' => "admin",
+        'title' => "World Base Layer",
+        'name' => "topp:world",
         'base' => TRUE
     ),
-    'roads' => array(
-        'title' => "Roads",
-        'name' => "roads",
-        'base' => FALSE
-    ),
-    'towns' => array(
-        'title' => "Towns",
-        'name' => "centers",
+    'state_population' => array(
+        'title' => "USA State Population",
+        'name' => "topp:states",
         'base' => FALSE
     )
-	
 );
 
 
 //WMS server url:
 //default: Opengeo's geoserver demo
-$config['service_url'] ="http://localhost:8080/geoserver/wms";
+$config['service_url'] ="http://demo.opengeo.org/geoserver/wms";
 
 ?>

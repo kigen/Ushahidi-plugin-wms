@@ -9,8 +9,6 @@
  */
 
 class layers {
-   
-    
     /*
      * Generate Map layer definition javascript code.   
      */
@@ -37,8 +35,6 @@ class layers {
                         ";
     }
 
-    
-    
     /*
      * Generate a Layer object to mock ushahidi layers Objects 
      * in [applicatio/helpers/map] 
@@ -48,16 +44,25 @@ class layers {
     public static function get_layer_object($layer_name) {
         $layer = new stdClass();
         $layer->active = TRUE;
+        $layer->name = "{$layer_name}";
         $layer->openlayers = "WMS";
-        $layer->title = 'OSM Tiles@Home';
-        $layer->name = $layer_name;
+        $layer->title = 'WMS Layer';
+        $layer->description = 'WMS Layer';
+        $layer->api_url = '';
         $layer->data = array(
             'baselayer' => TRUE,
-            'type' => 'WMS'
+            'attribution' => '',
+            'url' => '',
+            'type' => ''
         );
+        $layer->wms_params = array(
+            'format' => 'image/png',
+            'layers' => '',
+            'tiled' => TRUE
+        );
+        
         return $layer;
     }
-    
 
 }
 
