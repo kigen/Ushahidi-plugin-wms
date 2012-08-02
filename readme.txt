@@ -3,8 +3,8 @@ name: WMS Layer
 website: http://wpkenya.com
 description: A simple plugin for Ushahidi platform that allows adding OGC WMS Layers as {Base or Overlay} 
 version: 0.2
-requires: 2.0
-tested up to: 2.2
+requires: 2.3
+tested up to: 2.4
 author: Seth kigen
 author website: http://twitter.com/kigen
 
