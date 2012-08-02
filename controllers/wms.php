@@ -42,16 +42,26 @@ class Wms_Controller extends Controller {
         //Attach extra code to manipulate map to proper projection
         // TODO: Bounds can be read from database.. 
         
-          $js.= "var bounds = new OpenLayers.Bounds(
-          33.909, -4.67,
-          41.897, 5.018
-          );
-          map.maxExtend = bounds;\n\n";
+          $js.= "
+		  
+		  var bounds = new OpenLayers.Bounds(
+			33.909, -4.67,
+			41.897, 5.018
+          );\n		  		  
+          
+		  //This doesn't affect the map anymore... 
+		  //map.maxExtent = bounds;
+		  
+		  
+		  \n\n ";
+		  
          
 
-        $js .= "map.projection = new OpenLayers.Projection(\"EPSG:4326\");
-            \n\n
-            ";
+        $js .= "
+			//Keep it to the current projection.. retire this line.
+			//map.projection = new OpenLayers.Projection(\"EPSG:4326\");
+           
+		   \n\n";
        
        
         //Add layers as per above configuration.

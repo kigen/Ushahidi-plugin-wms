@@ -11,12 +11,21 @@ $config['layers'] = array(
         'title' => "World Base Layer",
         'name' => "topp:world",
         'base' => TRUE
-    ),
+    )
+	
+	//,
+	 //  'natural_world' => array(
+     //   'title' => "Natural Earth",
+     //   'name' => "topp:naturalearth",
+     //   'base' => FALSE
+    //)
+	,
     'state_population' => array(
         'title' => "USA State Population",
         'name' => "topp:states",
         'base' => FALSE
     )
+	
 );
 
 
