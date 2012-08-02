@@ -13,15 +13,9 @@ class wms {
         Event::add('system.pre_controller', array($this, 'add'));
     }
 
-    public function add() {
-        /*
-         * Evil :-( Work-around
-         * Register this action filter Event::run('ushahidi_filter.map_base_layers_code', $js); inside
-         * application/helper/map.php line 100 
-         * before return $js 
-         */
+    public function add() {  
         Event::add('ushahidi_filter.map_base_layers', array("Wms_Controller", 'regsiter_map_layers'));
-        Event::add('ushahidi_filter.map_base_layers_code', array("Wms_Controller", 'modify_layer_code'));
+        Event::add('ushahidi_filter.map_layers_js', array("Wms_Controller", 'modify_layer_code'));
     }    
 
     
