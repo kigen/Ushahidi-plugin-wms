@@ -20,9 +20,9 @@ class Wms_Install {
     public function run_install()
     {
         //Register the baselayer name..
-		$this->db->query("UPDATE ".Kohana::config('database.default.table_prefix').'settings SET default_map=\'wms_base\' WHERE id=1');
+		$this->db->query("UPDATE ".Kohana::config('database.default.table_prefix').'settings SET value=\'wms_base\' WHERE `key`=\'default_map\'');
 		//Set the default zoom level higher
-		$this->db->query("UPDATE ".Kohana::config('database.default.table_prefix').'settings SET default_zoom=\'5\' WHERE id=1');
+		$this->db->query("UPDATE ".Kohana::config('database.default.table_prefix').'settings SET value =\'5\' WHERE `key`=\'default_zoom\'');
     }
  
     /**
@@ -30,7 +30,7 @@ class Wms_Install {
      */
     public function uninstall()
     {
-          $this->db->query("UPDATE ".Kohana::config('database.default.table_prefix').'settings SET default_map=\'osm_tah\' where id=1');
+		  $this->db->query("UPDATE ".Kohana::config('database.default.table_prefix').'settings SET value value=\'osm_tah\' WHERE `key`=\'default_map\'');
 
     }
 }

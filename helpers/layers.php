@@ -21,8 +21,8 @@ class layers {
                             '" . $layer_title . "',base_url ,
                             {
                                 LAYERS: '{$layer_name}',
-                                transparent: 'true',
-                                tilesOrigin : map.maxExtent.left + ',' + map.maxExtent.bottom
+                                transparent: 'true'
+                                
                             },
                             {
                                 buffer: 0,
