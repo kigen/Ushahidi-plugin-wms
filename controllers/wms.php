@@ -1,87 +1,53 @@
 <?php
+
 /*
  * Author: @kigen
  */
 
 class Wms_Controller extends Controller {
 
-     
-    public function regsiter_map_layers() {
+    public function register_map_layers() {
 
         $layers = Event::$data;
-        
-        //Reset ushahidi default layer object definitions
-        $layers = array();
-        
-        //Read layer config values from [plugin config]
-        $layer_list = Kohana::config('wms.layers');       
-        
-        
-        //biuld dummy layer objects 
-        // The importance of this is to make sure that all your alyers will be added to 
-        // map.addlayers([------->layers added here-------])
-        
-        foreach ($layer_list as $key =>$layer) {        
-            $layers[$key] = layers::get_layer_object($key);
+
+        //Get all layers configured for the plugin.
+        $layer_list = ORM::factory('wms_layer')->all();
+
+        //Check map config, for full wms support
+        if (ORM::factory('wms_settings')->isWms()) {
+            //reset default layer definition
+            $layers = array();
+            //biuld dummy layer objects 
+            foreach ($layer_list as $key => $layer) {
+                $layers[$key] = layers::get_layer_object($key, $layer);
+            }
+        } else {
+            //Determine the Layer type of the base layer which is the default map.
+            $default_map = Kohana::config('settings.default_map');
+            $default_layer = $layers[$default_map];
+
+            foreach ($layer_list as $key => $layer) {
+                $layers[$key] = layers::get_layer_object($key, $layer, $default_layer->openlayers);
+            }
         }
-        
-      
+
         Event::$data = $layers;
     }
 
     public function modify_layer_code() {
         $js = Event::$data;
-        
-        //TODO: Move this configuration to database 
-         $layer_list = Kohana::config('wms.layers');
-       
-        $wms_server = Kohana::config('wms.service_url');
-         
-        $js = "var base_url = \"{$wms_server}\";\n\n";
-
-        //Attach extra code to manipulate map to proper projection
-        // TODO: Bounds can be read from database.. 
-        
-          $js.= "
-		  
-		  var bounds = new OpenLayers.Bounds(
-			33.909, -4.67,
-			41.897, 5.018
-          );\n		  		  
-          
-		  //This doesn't affect the map anymore... 
-		  //map.maxExtent = bounds;
-		  
-		  
-		  \n\n ";
-		  
-         
-
-        $js .= "
-			//Keep it to the current projection.. retire this line.
-			//map.projection = new OpenLayers.Projection(\"EPSG:4326\");
-           
-		   \n\n";
-       
-       
-        //Add layers as per above configuration.
-        foreach ($layer_list as $key =>$layer) {
-
-            if ($layer['base']) {
-                $js.= layers::get_layer($key, $layer['name'], $layer['title'], "true");
-            } else {
-                $js.= layers::get_layer($key, $layer['name'], $layer['title']);
-            }
+        if (ORM::factory('wms_settings')->isWms()) {
+            $js = "";
         }
-        
-        /*
-         * Add other layers here...
-         * $js .=""; but must register layer var in register_map_layers
-         */
-        
-        $js .="
-                //map.zoomToMaxExtent();
-              ";
+
+        //Get All layers from the database
+        $layer_list = ORM::factory('wms_layer')->all();
+
+        //Add layers as per above configuration.
+        foreach ($layer_list as $key => $layer) {
+            $js.= layers::get_layer($key, $layer);
+        }
+
         //send back the results
         Event::$data = $js;
     }
