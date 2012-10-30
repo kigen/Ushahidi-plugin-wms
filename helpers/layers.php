@@ -2,17 +2,21 @@
 
 /*
  * Author: @kigen
- * It support the plugin in:
+ * 
+ * It supports the plugin:
  * - generating WMS Layer js code
  * - Creating mockup Base Layer Objects
  * 
  */
 
 class layers {
-    /*
-     * Generate Map layer definition javascript code.   
-     */
 
+    /**
+     * Generate Map layer definition javascript code.
+     * @param string $var_name
+     * @param array $layer
+     * @return string 
+     */
     public static function get_layer($var_name, $layer) {
 
 
@@ -38,18 +42,24 @@ class layers {
                         ";
     }
 
-    /*
+    /**
      * Generate a Layer object to mock ushahidi layers Objects 
      * in [applicatio/helpers/map] 
      * (only useful for layer name recognition)
+     * @param string $layer_name
+     * @param array $layers
+     * @param string $baseType
+     * @return \stdClass 
      */
-
+     
     public static function get_layer_object($layer_name, $layers, $baseType = null) {
 
         $isbase = ($layers['isBase']) ? 1 : 0;
         $layer = new stdClass();
         $layer->active = TRUE;
         $layer->name = "{$layer_name}";
+        //FIX: To allow mixing layer types 
+        //Trick the overlay layer object to take the type of the base Layer. 
         if ($baseType == null) {
             $layer->openlayers = "WMS";
         } else {

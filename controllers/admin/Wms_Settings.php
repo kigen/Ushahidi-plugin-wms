@@ -73,7 +73,11 @@ class Wms_Settings_Controller extends Admin_Controller {
             }
         }
     }
-
+    
+    /**
+     * Switch base layers
+     * @param boolean $on 
+     */
     function base($on = TRUE) {
 
         if ($on) {

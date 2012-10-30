@@ -10,14 +10,24 @@ class Wms_layer_Model extends ORM {
     protected $table_name = 'wms_layer';
     var $db;
 
+    /**
+     * Get all active base layers
+     * @return WMS_Layer_Model 
+     */
     public function getBaseLayers() {
         return ORM::factory('wms_layer')->where(array('isBase' => 1, 'isActive' => 1))->find_all();
     }
-
+    /**
+     *Get all active layers
+     * @return WMS_Layer_Model 
+     */
     public function getOverlays() {
         return ORM::factory('wms_layer')->where(array('isBase' => 0, 'isActive' => 1))->find_all();
     }
-
+    /**
+     * Activate overlay layers only
+     * @param boolean $on 
+     */
     public function overlay($on = false) {
         $db = new Database();
         if ($on) {
@@ -26,7 +36,11 @@ class Wms_layer_Model extends ORM {
             $db->query("UPDATE {$this->table_name} SET isActive=0 where isBase=0");
         }
     }
-
+    
+    /**
+     * Turn off all the layers
+     * @param boolean $on 
+     */
     public function off($on = false) {
         $db = new Database();
         if ($on) {
@@ -36,13 +50,20 @@ class Wms_layer_Model extends ORM {
         }
     }
 
+    /**
+     * Activate All layers
+     * @param boolean $on 
+     */
     public function wms($on = false) {
         if ($on) {
             $this->off();
         }
     }
 
-    //Get all active layers 
+    /**
+     * Get all active layers 
+     * @return Array 
+     */
     public function all() {
         $layers = array();
         $base_index = 0;

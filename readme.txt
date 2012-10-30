@@ -1,11 +1,19 @@
 === About ===
+
 name: WMS Layers
+
 website: http://twitter.com/kigen
+
 description: A simple plugin for Ushahidi platform that allows adding OGC WMS Layers as {Base or Overlay} 
+
 version: 0.4
+
 requires: 2.5
+
 tested up to: 2.5
+
 author: Seth kigen
+
 author website: http://twitter.com/kigen
 
 == Description ==

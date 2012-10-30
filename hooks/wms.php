@@ -13,6 +13,7 @@ class wms {
     }
 
     public function add() {
+        //Check if the plugin has been turned off
         if (!ORM::factory('wms_settings')->isOff()) {
             Event::add('ushahidi_filter.map_base_layers', array("Wms_Controller", 'register_map_layers'));
             Event::add('ushahidi_filter.map_layers_js', array("Wms_Controller", 'modify_layer_code'));

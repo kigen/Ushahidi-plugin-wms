@@ -7,8 +7,16 @@
  */
 class Wms_settings_Model extends ORM {
 
+    /**
+     * Table Name
+     * @var string 
+     */
     protected $table_name = 'wms_settings';
 
+    /**
+     * Is WMS config Active
+     * @return boolean 
+     */
     public function isWms() {
         $setting = $this->where(array('key' => 'wms'))->find();
 
@@ -19,6 +27,10 @@ class Wms_settings_Model extends ORM {
         }
     }
 
+    /**
+     * Is the plugin turned off
+     * @return boolean 
+     */
     public function isOff() {
         $setting = $this->where(array('key' => 'off'))->find();
 
@@ -29,6 +41,10 @@ class Wms_settings_Model extends ORM {
         }
     }
 
+    /**
+     *  Is overlay only support active
+     * @return boolean 
+     */
     public function isOverlay() {
         $setting = $this->where(array('key' => 'overlay'))->find();
 
@@ -39,7 +55,9 @@ class Wms_settings_Model extends ORM {
         }
     }
 
-    //Auto switch between settings
+    /**
+     * Turn off plugin 
+     */
     public function off() {
 
 
@@ -50,6 +68,9 @@ class Wms_settings_Model extends ORM {
         $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key` = 'overlay'");
     }
 
+    /**
+     *Activate WMS full support 
+     */
     public function wms() {
 
 
@@ -59,7 +80,10 @@ class Wms_settings_Model extends ORM {
         $db->query("UPDATE {$this->table_name} SET value='TRUE' where `key` = 'wms'");
         $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key` = 'overlay'");
     }
-
+    
+    /**
+     *Activate Overlay Support 
+     */
     public function overlay() {
 
 
@@ -70,6 +94,9 @@ class Wms_settings_Model extends ORM {
         $db->query("UPDATE {$this->table_name} SET value='TRUE' where `key`='overlay'");
     }
 
+    /**
+     *  Value of the original base Layer
+     */
     public function lastBase() {
         $last_base = $this->where('key', 'last_base')->find();
         return $last_base->value;

@@ -13,7 +13,7 @@ class Wms_Install {
     }
 
     /**
-     * Install default 
+     * Setup all required tables 
      */
     public function run_install() {
 		$this->db->query("CREATE TABLE IF NOT EXISTS `wms_layer` (

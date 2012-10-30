@@ -1,11 +1,15 @@
 <?php
 
 /*
- * Author: @kigen
+ *  Author: @kigen *   
+ * 
  */
 
 class Wms_Controller extends Controller {
 
+    /**
+     *  Creates PHP layer Objects for the plugin layers 
+     */
     public function register_map_layers() {
 
         $layers = Event::$data;
@@ -34,8 +38,13 @@ class Wms_Controller extends Controller {
         Event::$data = $layers;
     }
 
+    /**
+     *  Generates Javascript layer object definitions for all the plugin layers
+     */
     public function modify_layer_code() {
         $js = Event::$data;
+        
+        //Full WMS support
         if (ORM::factory('wms_settings')->isWms()) {
             $js = "";
         }
