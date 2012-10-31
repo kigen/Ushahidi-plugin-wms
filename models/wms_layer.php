@@ -87,7 +87,7 @@ class Wms_layer_Model extends ORM {
                 }
                 $base_index++;
             } else {
-                if ($base_index == 0) {
+                if ($overlay_index == 0) {
                     $layer_name = "overlay";
                 } else {
                     $layer_name = "overlay{$overlay_index}";
