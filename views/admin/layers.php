@@ -116,7 +116,7 @@
                     <tr>
                         <th>Layer Name (eg world:map)</th>
                         <th>Layer Title (eg World Map)</th>
-                        <th>Url (eg http://localohost:8080/geoserver)</th>
+                        <th>Url (eg http://localhost:8080/geoserver/wms)</th>
                         <th>
                             <a id="add" onclick="addlayer('base')" href="#add">Add Layer</a>
                         </th>
@@ -153,7 +153,7 @@
                     <tr>
                         <th>Layer Name (eg world:map)</th>
                         <th>Layer Title (eg World Map)</th>
-                        <th>Url (eg http://localohost:8080/geoserver)</th>
+                        <th>Url (eg http://localhost:8080/geoserver/wms)</th>
 
                         <th>
                             <a id="add" onclick="addlayer('overlay')" href="#add">Add Layer</a>
@@ -190,6 +190,7 @@
         <div class="deleted">
 
         </div>
+        <br/>
         <?php echo form::submit("submit", 'Save Settings'); ?>
 
 

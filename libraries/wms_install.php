@@ -55,8 +55,8 @@ class Wms_Install {
            $this->db->query("UPDATE " . Kohana::config('database.default.table_prefix') . 'settings SET value=\''.$layer_id.'\' WHERE `key`=\'default_map\'');
        
 		
-                $sql ="DROP TABLE `wms_layer`; 
-                       DROP TABLE  `wms_settings`;";
+                $sql ="DROP TABLE TABLE IF EXISTS `wms_layer`; 
+                       DROP TABLE TABLE IF EXISTS `wms_settings`;";
         
         $this->db->query($sql); 
     }
