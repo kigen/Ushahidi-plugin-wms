@@ -21,8 +21,8 @@ class layers {
 
 
         $isbase = ($layer['isBase']) ? "true" : "false";
-        return $var_name .
-                "= new OpenLayers.Layer.WMS(
+        return 'var '.$var_name .
+                 "= new OpenLayers.Layer.WMS(
                             '" . $layer['title'] . "','{$layer['url']}' ,
                             {
                                 LAYERS: '{$layer['name']}',
@@ -51,7 +51,6 @@ class layers {
      * @param string $baseType
      * @return \stdClass 
      */
-     
     public static function get_layer_object($layer_name, $layers, $baseType = null) {
 
         $isbase = ($layers['isBase']) ? 1 : 0;

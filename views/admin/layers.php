@@ -191,7 +191,7 @@
 
         </div>
         <br/>
-        <?php echo form::submit("submit", 'Save Settings'); ?>
+        <?php echo form::submit("submit", 'Save Layers'); ?>
 
 
 

@@ -55,8 +55,12 @@ class Wms_Controller extends Controller {
         //Add layers as per above configuration.
         foreach ($layer_list as $key => $layer) {
             $js.= layers::get_layer($key, $layer);
+            $js.= "";
         }
 
+        
+        
+        
         //send back the results
         Event::$data = $js;
     }
