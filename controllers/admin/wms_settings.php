@@ -50,7 +50,7 @@ class Wms_Settings_Controller extends Admin_Controller {
         if ($_POST) {
             $post = Validation::factory($_POST);
             $i = 0;
-            if (isset($this->layerName)) {
+            if (isset($post->layerName)) {
                 foreach ($post->layerName as $l) {
 
                     $Layer;
