@@ -33,7 +33,7 @@ class layers {
                             {
                                 buffer: 0,
                                 sphericalMercator: true,
-                                singleTile: true,
+                                singleTile: false,
                                 displayOutsideMaxExtent: true,
                                 isBaseLayer: {$isbase}
                             } 
