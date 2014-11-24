@@ -63,9 +63,9 @@ class Wms_settings_Model extends ORM {
 
         $db = new Database();
 
-        $db->query("UPDATE {$this->table_name} SET value ='TRUE' where `key` = 'off'");
-        $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key` = 'wms'");
-        $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key` = 'overlay'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value ='TRUE' where `key` = 'off'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='FALSE' where `key` = 'wms'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='FALSE' where `key` = 'overlay'");
     }
 
     /**
@@ -76,9 +76,9 @@ class Wms_settings_Model extends ORM {
 
         $db = new Database();
 
-        $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key` = 'off'");
-        $db->query("UPDATE {$this->table_name} SET value='TRUE' where `key` = 'wms'");
-        $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key` = 'overlay'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='FALSE' where `key` = 'off'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='TRUE' where `key` = 'wms'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='FALSE' where `key` = 'overlay'");
     }
     
     /**
@@ -89,9 +89,9 @@ class Wms_settings_Model extends ORM {
 
         $db = new Database();
 
-        $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key`='off'");
-        $db->query("UPDATE {$this->table_name} SET value='FALSE' where `key`='wms'");
-        $db->query("UPDATE {$this->table_name} SET value='TRUE' where `key`='overlay'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='FALSE' where `key`='off'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='FALSE' where `key`='wms'");
+        $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET value='TRUE' where `key`='overlay'");
     }
 
     /**
