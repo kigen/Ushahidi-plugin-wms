@@ -31,9 +31,9 @@ class Wms_layer_Model extends ORM {
     public function overlay($on = false) {
         $db = new Database();
         if ($on) {
-            $db->query("UPDATE {$this->table_name} SET isActive=1 where isBase=0");
+            $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET isActive=1 where isBase=0");
         } else {
-            $db->query("UPDATE {$this->table_name} SET isActive=0 where isBase=0");
+            $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET isActive=0 where isBase=0");
         }
     }
     
@@ -44,9 +44,9 @@ class Wms_layer_Model extends ORM {
     public function off($on = false) {
         $db = new Database();
         if ($on) {
-            $db->query("UPDATE {$this->table_name} SET isActive=0 where 1=1");
+            $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET isActive=0 where 1=1");
         } else {
-            $db->query("UPDATE {$this->table_name} SET isActive=1 where 1=1");
+            $db->query("UPDATE " . Kohana::config('database.default.table_prefix') . $this->table_name . " SET isActive=1 where 1=1");
         }
     }
 
